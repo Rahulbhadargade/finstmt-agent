@@ -1,0 +1,6 @@
+{
+  "_comment": "ILLUSTRATIVE ONLY - shows the human-approval format. Names and notes are made up. Run with --resolutions examples/resolutions.example.json",
+  "JE-006": {"action": "approve", "approved_by": "example.controller", "note": "Example: fixed-asset register confirms the 215k is incremental"},
+  "JE-005": {"action": "approve", "approved_by": "example.controller", "account_remap": {"6315": "6310"}, "note": "Example: remap to T&E - the re-check should catch that this makes the entry circular"},
+  "JE-002": {"action": "approve", "approved_by": "example.controller", "note": "Example: rejected entries cannot be approved - this is ignored"}
+}

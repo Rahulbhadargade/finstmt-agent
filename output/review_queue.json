@@ -1,0 +1,23 @@
+[
+  {
+    "id": "JE-003",
+    "why": [
+      "FX revaluation amount does not reconcile"
+    ],
+    "how_to_resolve": "add an entry to a resolutions file: {action: approve, approved_by: <name>, note: <why>, account_remap: {...}}"
+  },
+  {
+    "id": "JE-005",
+    "why": [
+      "Account 6315 is not in the chart of accounts"
+    ],
+    "how_to_resolve": "add an entry to a resolutions file: {action: approve, approved_by: <name>, note: <why>, account_remap: {...}}"
+  },
+  {
+    "id": "JE-006",
+    "why": [
+      "Possible duplicate depreciation"
+    ],
+    "how_to_resolve": "add an entry to a resolutions file: {action: approve, approved_by: <name>, note: <why>, account_remap: {...}}"
+  }
+]

@@ -1,0 +1,150 @@
+{"event": "run_start", "input_sha256": {"chart_of_accounts.csv": "1139711bd276b2d443ab83b9a6461b3e1f62a26416962b0dcd0e0762028e49bf", "fx_rates.csv": "268c9b9b5a14ea5533e596ed8872f1c3b5515c92a46c9b197a10ef9f909d1893", "manual_adjustments.json": "26fcad0c0c7bda5306efea47e0c73238b2828b5d30afdd1bb0d54bb6a6704a0f", "prior_period_tb.csv": "aa1439622935eadb08ec1d0911c0c2f207fd9e71d32479326f5714a4c4180595", "trial_balance.csv": "6a5d38f4a7792e5a749d62ec34be8c2aa29f540ccf3c95caedf3e1f1b5203ca8"}, "llm": false, "materiality": "500000", "run_id": "f846bb2bfe8cf9628070fa1a56f56c2d903ca883d95b89fa08fdf4c438aa39f5", "version": "0.1.0"}
+{"detail": "Total debits $71,072,200.00 vs total credits $71,077,000.00: difference -$4,800.00 (as reported, before any FX translation). Not forced to balance; this must be explained, not plugged.", "event": "input_finding", "facts": {"credits": "71077000.00", "debits": "71072200.00", "difference": "-4800.00"}, "id": "DQ-01", "severity": "BLOCK", "title": "Trial balance does not balance"}
+{"detail": "Rows line 48 ($245,000.00), line 49 ($38,500.00). They are summed here, but one may be a duplicate export row.", "event": "input_finding", "facts": {"code": 6310, "currency": "USD", "rows": [48, 49]}, "id": "DQ-02", "severity": "REVIEW", "title": "Account 6310 appears 2 times in USD"}
+{"detail": "Line 63 carries $12,400.00 on an account with no COA mapping.", "event": "input_finding", "facts": {"code": 9999, "file": "trial_balance", "row": 63}, "id": "DQ-03", "severity": "REVIEW", "title": "Account 9999 'Suspense - Unmapped' is not in the COA (trial_balance)"}
+{"detail": "Line 34 carries $132,000.00 on an account with no COA mapping. Possible match (suggestion only): 6900 'Other Operating Expenses', confidence 0.81.", "event": "input_finding", "facts": {"code": 6905, "file": "prior_period_tb", "row": 34}, "id": "DQ-03", "severity": "REVIEW", "title": "Account 6905 'Sundry Operating Expenses' is not in the COA (prior_period_tb)"}
+{"detail": "GBP balances exist in the TB but fx_rates.csv has no period_end rate. Translation and revaluation for GBP cannot be verified.", "event": "input_finding", "facts": {"currency": "GBP", "rate_type": "period_end"}, "id": "DQ-04", "severity": "REVIEW", "title": "No period_end FX rate for GBP"}
+{"detail": "The cash-flow statement cannot classify this account until a category is chosen.", "event": "input_finding", "facts": {"code": 1150}, "id": "DQ-05", "severity": "WARN", "title": "COA account 1150 'Other Current Assets' has cash-flow category TBD"}
+{"detail": "Nothing maps under it.", "event": "input_finding", "facts": {"code": 1290}, "id": "DQ-05", "severity": "INFO", "title": "COA header 1290 'Other Assets' has no child accounts"}
+{"detail": "The cash-flow statement cannot classify this account until a category is chosen.", "event": "input_finding", "facts": {"code": 2170}, "id": "DQ-05", "severity": "WARN", "title": "COA account 2170 'Intercompany Payable' has cash-flow category TBD"}
+{"detail": "Harmless for a header.", "event": "input_finding", "facts": {"code": 7000}, "id": "DQ-05", "severity": "INFO", "title": "COA header 7000 has no normal balance"}
+{"detail": "It looks post-close (balance sheet only), but one P&L-style account (6905) is present. Retained earnings moved without a visible closing entry; confirm pre- vs post-close.", "event": "input_finding", "facts": {}, "id": "DQ-06", "severity": "WARN", "title": "Prior-period TB has almost no P&L accounts"}
+{"entry": "JE-001", "event": "rule", "result": "pass", "rule": "R01"}
+{"entry": "JE-001", "event": "rule", "result": "pass", "rule": "R02"}
+{"entry": "JE-001", "event": "rule", "result": "pass", "rule": "R03"}
+{"entry": "JE-001", "event": "rule", "result": "pass", "rule": "R04"}
+{"entry": "JE-001", "event": "rule", "result": "pass", "rule": "R05"}
+{"entry": "JE-001", "event": "rule", "result": "pass", "rule": "R06"}
+{"entry": "JE-001", "event": "rule", "result": "pass", "rule": "R07"}
+{"entry": "JE-001", "event": "rule", "result": "pass", "rule": "R08"}
+{"entry": "JE-001", "event": "rule", "result": "fail", "rule": "R09"}
+{"entry": "JE-001", "event": "rule", "result": "pass", "rule": "R10"}
+{"entry": "JE-001", "event": "rule", "result": "pass", "rule": "R11"}
+{"action": "Get approver sign-off and attach the supporting workbook.", "entry": "JE-001", "event": "finding", "facts": {"amount": "850000.0", "threshold": "500000"}, "plain": "At $850,000.00 this entry is at or above the $500,000.00 review threshold. It was posted, but an approver should sign it off.", "rule": "R09", "severity": "WARN", "suggestions": [], "title": "Above review threshold"}
+{"content_hash": "fd8cbbfd83f95549331ba64a3389c4319ed95cf0fe024ea3960d282330c4a17f", "decision": "ACCEPTED_WITH_WARNINGS", "entry": "JE-001", "event": "decision"}
+{"entry": "JE-002", "event": "rule", "result": "pass", "rule": "R01"}
+{"entry": "JE-002", "event": "rule", "result": "fail", "rule": "R02"}
+{"entry": "JE-002", "event": "rule", "result": "pass", "rule": "R03"}
+{"entry": "JE-002", "event": "rule", "result": "pass", "rule": "R04"}
+{"entry": "JE-002", "event": "rule", "result": "pass", "rule": "R05"}
+{"entry": "JE-002", "event": "rule", "result": "pass", "rule": "R06"}
+{"entry": "JE-002", "event": "rule", "result": "pass", "rule": "R07"}
+{"entry": "JE-002", "event": "rule", "result": "pass", "rule": "R08"}
+{"entry": "JE-002", "event": "rule", "result": "pass", "rule": "R09"}
+{"entry": "JE-002", "event": "rule", "result": "pass", "rule": "R10"}
+{"entry": "JE-002", "event": "rule", "result": "pass", "rule": "R11"}
+{"action": "Ask the preparer (Controller note 2024-12-28) which amount is correct and resubmit. Nothing was posted and nothing was auto-corrected.", "entry": "JE-002", "event": "finding", "facts": {"credits": "25000.0", "debits": "28500.0", "difference": "3500.0"}, "plain": "Debits total $28,500.00 but credits total $25,000.00, so the entry is out of balance by $3,500.00. Posting it would break the trial balance.", "rule": "R02", "severity": "BLOCK", "suggestions": [], "title": "Debits do not equal credits"}
+{"content_hash": "eb6e8d8e7207975b1d84c98f0580aaa9d2c882bf57951b5b9871483664ed8128", "decision": "REJECTED", "entry": "JE-002", "event": "decision"}
+{"entry": "JE-003", "event": "rule", "result": "pass", "rule": "R01"}
+{"entry": "JE-003", "event": "rule", "result": "pass", "rule": "R02"}
+{"entry": "JE-003", "event": "rule", "result": "pass", "rule": "R03"}
+{"entry": "JE-003", "event": "rule", "result": "pass", "rule": "R04"}
+{"entry": "JE-003", "event": "rule", "result": "pass", "rule": "R05"}
+{"entry": "JE-003", "event": "rule", "result": "pass", "rule": "R06"}
+{"entry": "JE-003", "event": "rule", "result": "fail", "rule": "R07"}
+{"entry": "JE-003", "event": "rule", "result": "pass", "rule": "R08"}
+{"entry": "JE-003", "event": "rule", "result": "pass", "rule": "R09"}
+{"entry": "JE-003", "event": "rule", "result": "pass", "rule": "R10"}
+{"entry": "JE-003", "event": "rule", "result": "pass", "rule": "R11"}
+{"action": "Ask the preparer which rates and balance were used, or approve it explicitly if the difference is understood.", "entry": "JE-003", "event": "finding", "facts": {"eur_balance": "825400.00", "recomputed": {"average-to-closing rate": "10730.20000", "opening-to-closing rate": "19809.60000"}, "stated": "11200.0"}, "plain": "The entry revalues EUR cash by $11,200.00. Recomputing from the EUR balance (EUR 825,400.00) and the rates file gives average-to-closing rate: $10,730.20; opening-to-closing rate: $19,809.60. The entry matches neither (within 1%).", "rule": "R07", "severity": "REVIEW", "suggestions": [], "title": "FX revaluation amount does not reconcile"}
+{"action": "Provide the GBP period-end rate.", "entry": "JE-003", "event": "finding", "facts": {"balance": "412300.00", "currency": "GBP"}, "plain": "GBP cash of 412,300.00 also needs revaluation, but there is no GBP period-end rate, so this entry covers EUR only.", "rule": "R07", "severity": "WARN", "suggestions": [], "title": "GBP cash is not revalued"}
+{"content_hash": "a94c319559c702198f39342dac800aab35dc2bef93e84d7f1bc524254916504e", "decision": "QUARANTINED", "entry": "JE-003", "event": "decision"}
+{"entry": "JE-004", "event": "rule", "result": "pass", "rule": "R01"}
+{"entry": "JE-004", "event": "rule", "result": "pass", "rule": "R02"}
+{"entry": "JE-004", "event": "rule", "result": "pass", "rule": "R03"}
+{"entry": "JE-004", "event": "rule", "result": "pass", "rule": "R04"}
+{"entry": "JE-004", "event": "rule", "result": "pass", "rule": "R05"}
+{"entry": "JE-004", "event": "rule", "result": "pass", "rule": "R06"}
+{"entry": "JE-004", "event": "rule", "result": "pass", "rule": "R07"}
+{"entry": "JE-004", "event": "rule", "result": "pass", "rule": "R08"}
+{"entry": "JE-004", "event": "rule", "result": "pass", "rule": "R09"}
+{"entry": "JE-004", "event": "rule", "result": "pass", "rule": "R10"}
+{"entry": "JE-004", "event": "rule", "result": "pass", "rule": "R11"}
+{"content_hash": "782654be740716b1f01134bee30d43e622f435f501d70f4ff93669c67a1c4973", "decision": "ACCEPTED", "entry": "JE-004", "event": "decision"}
+{"entry": "JE-005", "event": "rule", "result": "pass", "rule": "R01"}
+{"entry": "JE-005", "event": "rule", "result": "pass", "rule": "R02"}
+{"entry": "JE-005", "event": "rule", "result": "fail", "rule": "R03"}
+{"entry": "JE-005", "event": "rule", "result": "pass", "rule": "R04"}
+{"entry": "JE-005", "event": "rule", "result": "pass", "rule": "R05"}
+{"entry": "JE-005", "event": "rule", "result": "pass", "rule": "R06"}
+{"entry": "JE-005", "event": "rule", "result": "pass", "rule": "R07"}
+{"entry": "JE-005", "event": "rule", "result": "pass", "rule": "R08"}
+{"entry": "JE-005", "event": "rule", "result": "pass", "rule": "R09"}
+{"entry": "JE-005", "event": "rule", "result": "pass", "rule": "R10"}
+{"entry": "JE-005", "event": "rule", "result": "pass", "rule": "R11"}
+{"action": "Either add the account to the COA or tell me which existing account to use; then the entry is re-checked.", "entry": "JE-005", "event": "finding", "facts": {"account": "6315", "line": 1}, "plain": "Line 1 posts $18,500.00 to account 6315, which does not exist in the COA (memo: 'Conf travel'). The closest existing accounts are listed as suggestions only; none were applied. Note: mapping 6315 to 6310 would make this entry post to the same account on both sides (net zero), so the real fix is probably a new COA account, not a remap.", "rule": "R03", "severity": "REVIEW", "suggestions": [{"account": 6310, "confidence": 0.72, "name": "Travel and Entertainment"}, {"account": 6300, "confidence": 0.46, "name": "Marketing and Advertising"}, {"account": 6500, "confidence": 0.1, "name": "Depreciation Expense"}], "title": "Account 6315 is not in the chart of accounts"}
+{"content_hash": "1db6efd39456afdd707e0e046384a21d7705e4b3aaf3ef51540c92df0eb5213a", "decision": "QUARANTINED", "entry": "JE-005", "event": "decision"}
+{"entry": "JE-006", "event": "rule", "result": "pass", "rule": "R01"}
+{"entry": "JE-006", "event": "rule", "result": "pass", "rule": "R02"}
+{"entry": "JE-006", "event": "rule", "result": "pass", "rule": "R03"}
+{"entry": "JE-006", "event": "rule", "result": "pass", "rule": "R04"}
+{"entry": "JE-006", "event": "rule", "result": "pass", "rule": "R05"}
+{"entry": "JE-006", "event": "rule", "result": "pass", "rule": "R06"}
+{"entry": "JE-006", "event": "rule", "result": "pass", "rule": "R07"}
+{"entry": "JE-006", "event": "rule", "result": "fail", "rule": "R08"}
+{"entry": "JE-006", "event": "rule", "result": "pass", "rule": "R09"}
+{"entry": "JE-006", "event": "rule", "result": "pass", "rule": "R10"}
+{"entry": "JE-006", "event": "rule", "result": "pass", "rule": "R11"}
+{"action": "Check the fixed asset register: is this amount incremental to what the TB already contains?", "entry": "JE-006", "event": "finding", "facts": {"accum_dep_movement": "850000.00", "entry_amount": "215000.0", "expense_in_tb": "850000.00"}, "plain": "Accumulated depreciation already grew by $850,000.00 since the prior period, which equals the depreciation expense already in the TB ($850,000.00). Adding $215,000.00 more may double count.", "rule": "R08", "severity": "REVIEW", "suggestions": [], "title": "Possible duplicate depreciation"}
+{"content_hash": "55d4a424209617568afbbf856d48992b91ca8dac899ad6875ae55bafb302b9e0", "decision": "QUARANTINED", "entry": "JE-006", "event": "decision"}
+{"entry": "JE-007", "event": "rule", "result": "pass", "rule": "R01"}
+{"entry": "JE-007", "event": "rule", "result": "pass", "rule": "R02"}
+{"entry": "JE-007", "event": "rule", "result": "pass", "rule": "R03"}
+{"entry": "JE-007", "event": "rule", "result": "pass", "rule": "R04"}
+{"entry": "JE-007", "event": "rule", "result": "pass", "rule": "R05"}
+{"entry": "JE-007", "event": "rule", "result": "pass", "rule": "R06"}
+{"entry": "JE-007", "event": "rule", "result": "pass", "rule": "R07"}
+{"entry": "JE-007", "event": "rule", "result": "pass", "rule": "R08"}
+{"entry": "JE-007", "event": "rule", "result": "pass", "rule": "R09"}
+{"entry": "JE-007", "event": "rule", "result": "pass", "rule": "R10"}
+{"entry": "JE-007", "event": "rule", "result": "pass", "rule": "R11"}
+{"content_hash": "f593475dfe0c9e55ce190d2a36b9c8c69f46bcc87f9b091e9941f31c326e4b02", "decision": "ACCEPTED", "entry": "JE-007", "event": "decision"}
+{"entry": "JE-008", "event": "rule", "result": "pass", "rule": "R01"}
+{"entry": "JE-008", "event": "rule", "result": "pass", "rule": "R02"}
+{"entry": "JE-008", "event": "rule", "result": "pass", "rule": "R03"}
+{"entry": "JE-008", "event": "rule", "result": "fail", "rule": "R04"}
+{"entry": "JE-008", "event": "rule", "result": "pass", "rule": "R05"}
+{"entry": "JE-008", "event": "rule", "result": "pass", "rule": "R06"}
+{"entry": "JE-008", "event": "rule", "result": "pass", "rule": "R07"}
+{"entry": "JE-008", "event": "rule", "result": "pass", "rule": "R08"}
+{"entry": "JE-008", "event": "rule", "result": "pass", "rule": "R09"}
+{"entry": "JE-008", "event": "rule", "result": "pass", "rule": "R10"}
+{"entry": "JE-008", "event": "rule", "result": "fail", "rule": "R11"}
+{"action": "Ask the preparer for the intended counter-account (usually cash or the intercompany receivable) and resubmit.", "entry": "JE-008", "event": "finding", "facts": {"accounts": ["2170"], "amount": "320000.0"}, "plain": "Every line posts to the same account(s) (2170) and cancels out: $320,000.00 is debited and credited to the same place, so the entry changes nothing. Intercompany settlements need a different account on each side (for example cash against the intercompany payable).", "rule": "R04", "severity": "BLOCK", "suggestions": [], "title": "Entry nets to zero (circular)"}
+{"action": "Decide the category in the COA.", "entry": "JE-008", "event": "finding", "facts": {"account": 2170}, "plain": "Account 2170 ('Intercompany Payable') has no cash-flow category in the COA, so this entry's effect on the cash-flow statement is unclassified.", "rule": "R11", "severity": "INFO", "suggestions": [], "title": "Cash-flow category undecided for 2170"}
+{"content_hash": "42e99e4059a92d79dc0386f730f1bea01dd478dee74de15073aab287e123afa0", "decision": "REJECTED", "entry": "JE-008", "event": "decision"}
+{"entry": "JE-009", "event": "rule", "result": "pass", "rule": "R01"}
+{"entry": "JE-009", "event": "rule", "result": "pass", "rule": "R02"}
+{"entry": "JE-009", "event": "rule", "result": "pass", "rule": "R03"}
+{"entry": "JE-009", "event": "rule", "result": "pass", "rule": "R04"}
+{"entry": "JE-009", "event": "rule", "result": "pass", "rule": "R05"}
+{"entry": "JE-009", "event": "rule", "result": "pass", "rule": "R06"}
+{"entry": "JE-009", "event": "rule", "result": "pass", "rule": "R07"}
+{"entry": "JE-009", "event": "rule", "result": "pass", "rule": "R08"}
+{"entry": "JE-009", "event": "rule", "result": "pass", "rule": "R09"}
+{"entry": "JE-009", "event": "rule", "result": "pass", "rule": "R10"}
+{"entry": "JE-009", "event": "rule", "result": "pass", "rule": "R11"}
+{"content_hash": "222018d0407ba6fc820dada0d3b7326b28cc121453909a7c1f4f32ab82743625", "decision": "ACCEPTED", "entry": "JE-009", "event": "decision"}
+{"entry": "JE-010", "event": "rule", "result": "pass", "rule": "R01"}
+{"entry": "JE-010", "event": "rule", "result": "pass", "rule": "R02"}
+{"entry": "JE-010", "event": "rule", "result": "pass", "rule": "R03"}
+{"entry": "JE-010", "event": "rule", "result": "pass", "rule": "R04"}
+{"entry": "JE-010", "event": "rule", "result": "pass", "rule": "R05"}
+{"entry": "JE-010", "event": "rule", "result": "pass", "rule": "R06"}
+{"entry": "JE-010", "event": "rule", "result": "pass", "rule": "R07"}
+{"entry": "JE-010", "event": "rule", "result": "pass", "rule": "R08"}
+{"entry": "JE-010", "event": "rule", "result": "pass", "rule": "R09"}
+{"entry": "JE-010", "event": "rule", "result": "pass", "rule": "R10"}
+{"entry": "JE-010", "event": "rule", "result": "pass", "rule": "R11"}
+{"content_hash": "e3ce6eff3e6f5b8ee961fba97cb40d65f607f25c2c4c5d6eb6e2595c31f2d7a1", "decision": "ACCEPTED", "entry": "JE-010", "event": "decision"}
+{"account": 6100, "credit": "0", "debit": "850000.0", "entry": "JE-001", "event": "posted", "line": 1}
+{"account": 2120, "credit": "850000.0", "debit": "0", "entry": "JE-001", "event": "posted", "line": 2}
+{"account": 6600, "credit": "0", "debit": "45000.0", "entry": "JE-004", "event": "posted", "line": 1}
+{"account": 1121, "credit": "45000.0", "debit": "0", "entry": "JE-004", "event": "posted", "line": 2}
+{"account": 8200, "credit": "0", "debit": "38000.0", "entry": "JE-007", "event": "posted", "line": 1}
+{"account": 1250, "credit": "38000.0", "debit": "0", "entry": "JE-007", "event": "posted", "line": 2}
+{"account": 6400, "credit": "0", "debit": "75000.0", "entry": "JE-009", "event": "posted", "line": 1}
+{"account": 2120, "credit": "75000.0", "debit": "0", "entry": "JE-009", "event": "posted", "line": 2}
+{"account": 2210, "credit": "0", "debit": "200000.0", "entry": "JE-010", "event": "posted", "line": 1}
+{"account": 2140, "credit": "200000.0", "debit": "0", "entry": "JE-010", "event": "posted", "line": 2}
+{"decisions": {"ACCEPTED": 4, "ACCEPTED_WITH_WARNINGS": 1, "QUARANTINED": 3, "REJECTED": 2}, "event": "run_end", "imbalance_after": "-4800.00", "imbalance_before": "-4800.00", "ni_after": "4998500.00", "ni_before": "6006500.00", "posted_lines": 10}

@@ -1,0 +1,102 @@
+[
+  {
+    "detail": "Total debits $71,072,200.00 vs total credits $71,077,000.00: difference -$4,800.00 (as reported, before any FX translation). Not forced to balance; this must be explained, not plugged.",
+    "facts": {
+      "credits": "71077000.00",
+      "debits": "71072200.00",
+      "difference": "-4800.00"
+    },
+    "id": "DQ-01",
+    "severity": "BLOCK",
+    "title": "Trial balance does not balance"
+  },
+  {
+    "detail": "Rows line 48 ($245,000.00), line 49 ($38,500.00). They are summed here, but one may be a duplicate export row.",
+    "facts": {
+      "code": 6310,
+      "currency": "USD",
+      "rows": [
+        48,
+        49
+      ]
+    },
+    "id": "DQ-02",
+    "severity": "REVIEW",
+    "title": "Account 6310 appears 2 times in USD"
+  },
+  {
+    "detail": "Line 63 carries $12,400.00 on an account with no COA mapping.",
+    "facts": {
+      "code": 9999,
+      "file": "trial_balance",
+      "row": 63
+    },
+    "id": "DQ-03",
+    "severity": "REVIEW",
+    "title": "Account 9999 'Suspense - Unmapped' is not in the COA (trial_balance)"
+  },
+  {
+    "detail": "Line 34 carries $132,000.00 on an account with no COA mapping. Possible match (suggestion only): 6900 'Other Operating Expenses', confidence 0.81.",
+    "facts": {
+      "code": 6905,
+      "file": "prior_period_tb",
+      "row": 34
+    },
+    "id": "DQ-03",
+    "severity": "REVIEW",
+    "title": "Account 6905 'Sundry Operating Expenses' is not in the COA (prior_period_tb)"
+  },
+  {
+    "detail": "GBP balances exist in the TB but fx_rates.csv has no period_end rate. Translation and revaluation for GBP cannot be verified.",
+    "facts": {
+      "currency": "GBP",
+      "rate_type": "period_end"
+    },
+    "id": "DQ-04",
+    "severity": "REVIEW",
+    "title": "No period_end FX rate for GBP"
+  },
+  {
+    "detail": "The cash-flow statement cannot classify this account until a category is chosen.",
+    "facts": {
+      "code": 1150
+    },
+    "id": "DQ-05",
+    "severity": "WARN",
+    "title": "COA account 1150 'Other Current Assets' has cash-flow category TBD"
+  },
+  {
+    "detail": "Nothing maps under it.",
+    "facts": {
+      "code": 1290
+    },
+    "id": "DQ-05",
+    "severity": "INFO",
+    "title": "COA header 1290 'Other Assets' has no child accounts"
+  },
+  {
+    "detail": "The cash-flow statement cannot classify this account until a category is chosen.",
+    "facts": {
+      "code": 2170
+    },
+    "id": "DQ-05",
+    "severity": "WARN",
+    "title": "COA account 2170 'Intercompany Payable' has cash-flow category TBD"
+  },
+  {
+    "detail": "Harmless for a header.",
+    "facts": {
+      "code": 7000
+    },
+    "id": "DQ-05",
+    "severity": "INFO",
+    "title": "COA header 7000 has no normal balance"
+  },
+  {
+    "detail": "It looks post-close (balance sheet only), but one P&L-style account (6905) is present. Retained earnings moved without a visible closing entry; confirm pre- vs post-close.",
+    "facts": {},
+    "id": "DQ-06",
+    "severity": "WARN",
+    "title": "Prior-period TB has almost no P&L accounts"
+  }
+]

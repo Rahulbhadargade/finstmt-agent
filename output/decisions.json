@@ -1,0 +1,681 @@
+{
+  "entries": [
+    {
+      "content_hash": "fd8cbbfd83f95549331ba64a3389c4319ed95cf0fe024ea3960d282330c4a17f",
+      "decision": "ACCEPTED_WITH_WARNINGS",
+      "findings": [
+        {
+          "action": "Get approver sign-off and attach the supporting workbook.",
+          "facts": {
+            "amount": "850000.0",
+            "threshold": "500000"
+          },
+          "plain": "At $850,000.00 this entry is at or above the $500,000.00 review threshold. It was posted, but an approver should sign it off.",
+          "rule": "R09",
+          "severity": "WARN",
+          "suggestions": [],
+          "title": "Above review threshold"
+        }
+      ],
+      "id": "JE-001",
+      "override": null,
+      "rule_trace": [
+        [
+          "R01",
+          "pass"
+        ],
+        [
+          "R02",
+          "pass"
+        ],
+        [
+          "R03",
+          "pass"
+        ],
+        [
+          "R04",
+          "pass"
+        ],
+        [
+          "R05",
+          "pass"
+        ],
+        [
+          "R06",
+          "pass"
+        ],
+        [
+          "R07",
+          "pass"
+        ],
+        [
+          "R08",
+          "pass"
+        ],
+        [
+          "R09",
+          "fail"
+        ],
+        [
+          "R10",
+          "pass"
+        ],
+        [
+          "R11",
+          "pass"
+        ]
+      ],
+      "summary": "Posted, with points you should know about. At $850,000.00 this entry is at or above the $500,000.00 review threshold. It was posted, but an approver should sign it off. Next step: Get approver sign-off and attach the supporting workbook.",
+      "summary_source": "template"
+    },
+    {
+      "content_hash": "eb6e8d8e7207975b1d84c98f0580aaa9d2c882bf57951b5b9871483664ed8128",
+      "decision": "REJECTED",
+      "findings": [
+        {
+          "action": "Ask the preparer (Controller note 2024-12-28) which amount is correct and resubmit. Nothing was posted and nothing was auto-corrected.",
+          "facts": {
+            "credits": "25000.0",
+            "debits": "28500.0",
+            "difference": "3500.0"
+          },
+          "plain": "Debits total $28,500.00 but credits total $25,000.00, so the entry is out of balance by $3,500.00. Posting it would break the trial balance.",
+          "rule": "R02",
+          "severity": "BLOCK",
+          "suggestions": [],
+          "title": "Debits do not equal credits"
+        }
+      ],
+      "id": "JE-002",
+      "override": null,
+      "rule_trace": [
+        [
+          "R01",
+          "pass"
+        ],
+        [
+          "R02",
+          "fail"
+        ],
+        [
+          "R03",
+          "pass"
+        ],
+        [
+          "R04",
+          "pass"
+        ],
+        [
+          "R05",
+          "pass"
+        ],
+        [
+          "R06",
+          "pass"
+        ],
+        [
+          "R07",
+          "pass"
+        ],
+        [
+          "R08",
+          "pass"
+        ],
+        [
+          "R09",
+          "pass"
+        ],
+        [
+          "R10",
+          "pass"
+        ],
+        [
+          "R11",
+          "pass"
+        ]
+      ],
+      "summary": "Rejected. Not posted. Debits total $28,500.00 but credits total $25,000.00, so the entry is out of balance by $3,500.00. Posting it would break the trial balance. Next step: Ask the preparer (Controller note 2024-12-28) which amount is correct and resubmit. Nothing was posted and nothing was auto-corrected.",
+      "summary_source": "template"
+    },
+    {
+      "content_hash": "a94c319559c702198f39342dac800aab35dc2bef93e84d7f1bc524254916504e",
+      "decision": "QUARANTINED",
+      "findings": [
+        {
+          "action": "Ask the preparer which rates and balance were used, or approve it explicitly if the difference is understood.",
+          "facts": {
+            "eur_balance": "825400.00",
+            "recomputed": {
+              "average-to-closing rate": "10730.20000",
+              "opening-to-closing rate": "19809.60000"
+            },
+            "stated": "11200.0"
+          },
+          "plain": "The entry revalues EUR cash by $11,200.00. Recomputing from the EUR balance (EUR 825,400.00) and the rates file gives average-to-closing rate: $10,730.20; opening-to-closing rate: $19,809.60. The entry matches neither (within 1%).",
+          "rule": "R07",
+          "severity": "REVIEW",
+          "suggestions": [],
+          "title": "FX revaluation amount does not reconcile"
+        },
+        {
+          "action": "Provide the GBP period-end rate.",
+          "facts": {
+            "balance": "412300.00",
+            "currency": "GBP"
+          },
+          "plain": "GBP cash of 412,300.00 also needs revaluation, but there is no GBP period-end rate, so this entry covers EUR only.",
+          "rule": "R07",
+          "severity": "WARN",
+          "suggestions": [],
+          "title": "GBP cash is not revalued"
+        }
+      ],
+      "id": "JE-003",
+      "override": null,
+      "rule_trace": [
+        [
+          "R01",
+          "pass"
+        ],
+        [
+          "R02",
+          "pass"
+        ],
+        [
+          "R03",
+          "pass"
+        ],
+        [
+          "R04",
+          "pass"
+        ],
+        [
+          "R05",
+          "pass"
+        ],
+        [
+          "R06",
+          "pass"
+        ],
+        [
+          "R07",
+          "fail"
+        ],
+        [
+          "R08",
+          "pass"
+        ],
+        [
+          "R09",
+          "pass"
+        ],
+        [
+          "R10",
+          "pass"
+        ],
+        [
+          "R11",
+          "pass"
+        ]
+      ],
+      "summary": "On hold for your decision. Not posted. The entry revalues EUR cash by $11,200.00. Recomputing from the EUR balance (EUR 825,400.00) and the rates file gives average-to-closing rate: $10,730.20; opening-to-closing rate: $19,809.60. The entry matches neither (within 1%). GBP cash of 412,300.00 also needs revaluation, but there is no GBP period-end rate, so this entry covers EUR only. Next step: Ask the preparer which rates and balance were used, or approve it explicitly if the difference is understood. Provide the GBP period-end rate.",
+      "summary_source": "template"
+    },
+    {
+      "content_hash": "782654be740716b1f01134bee30d43e622f435f501d70f4ff93669c67a1c4973",
+      "decision": "ACCEPTED",
+      "findings": [],
+      "id": "JE-004",
+      "override": null,
+      "rule_trace": [
+        [
+          "R01",
+          "pass"
+        ],
+        [
+          "R02",
+          "pass"
+        ],
+        [
+          "R03",
+          "pass"
+        ],
+        [
+          "R04",
+          "pass"
+        ],
+        [
+          "R05",
+          "pass"
+        ],
+        [
+          "R06",
+          "pass"
+        ],
+        [
+          "R07",
+          "pass"
+        ],
+        [
+          "R08",
+          "pass"
+        ],
+        [
+          "R09",
+          "pass"
+        ],
+        [
+          "R10",
+          "pass"
+        ],
+        [
+          "R11",
+          "pass"
+        ]
+      ],
+      "summary": "Passed all checks and was posted.",
+      "summary_source": "template"
+    },
+    {
+      "content_hash": "1db6efd39456afdd707e0e046384a21d7705e4b3aaf3ef51540c92df0eb5213a",
+      "decision": "QUARANTINED",
+      "findings": [
+        {
+          "action": "Either add the account to the COA or tell me which existing account to use; then the entry is re-checked.",
+          "facts": {
+            "account": "6315",
+            "line": 1
+          },
+          "plain": "Line 1 posts $18,500.00 to account 6315, which does not exist in the COA (memo: 'Conf travel'). The closest existing accounts are listed as suggestions only; none were applied. Note: mapping 6315 to 6310 would make this entry post to the same account on both sides (net zero), so the real fix is probably a new COA account, not a remap.",
+          "rule": "R03",
+          "severity": "REVIEW",
+          "suggestions": [
+            {
+              "account": 6310,
+              "confidence": 0.72,
+              "name": "Travel and Entertainment"
+            },
+            {
+              "account": 6300,
+              "confidence": 0.46,
+              "name": "Marketing and Advertising"
+            },
+            {
+              "account": 6500,
+              "confidence": 0.1,
+              "name": "Depreciation Expense"
+            }
+          ],
+          "title": "Account 6315 is not in the chart of accounts"
+        }
+      ],
+      "id": "JE-005",
+      "override": null,
+      "rule_trace": [
+        [
+          "R01",
+          "pass"
+        ],
+        [
+          "R02",
+          "pass"
+        ],
+        [
+          "R03",
+          "fail"
+        ],
+        [
+          "R04",
+          "pass"
+        ],
+        [
+          "R05",
+          "pass"
+        ],
+        [
+          "R06",
+          "pass"
+        ],
+        [
+          "R07",
+          "pass"
+        ],
+        [
+          "R08",
+          "pass"
+        ],
+        [
+          "R09",
+          "pass"
+        ],
+        [
+          "R10",
+          "pass"
+        ],
+        [
+          "R11",
+          "pass"
+        ]
+      ],
+      "summary": "On hold for your decision. Not posted. Line 1 posts $18,500.00 to account 6315, which does not exist in the COA (memo: 'Conf travel'). The closest existing accounts are listed as suggestions only; none were applied. Note: mapping 6315 to 6310 would make this entry post to the same account on both sides (net zero), so the real fix is probably a new COA account, not a remap. Next step: Either add the account to the COA or tell me which existing account to use; then the entry is re-checked.",
+      "summary_source": "template"
+    },
+    {
+      "content_hash": "55d4a424209617568afbbf856d48992b91ca8dac899ad6875ae55bafb302b9e0",
+      "decision": "QUARANTINED",
+      "findings": [
+        {
+          "action": "Check the fixed asset register: is this amount incremental to what the TB already contains?",
+          "facts": {
+            "accum_dep_movement": "850000.00",
+            "entry_amount": "215000.0",
+            "expense_in_tb": "850000.00"
+          },
+          "plain": "Accumulated depreciation already grew by $850,000.00 since the prior period, which equals the depreciation expense already in the TB ($850,000.00). Adding $215,000.00 more may double count.",
+          "rule": "R08",
+          "severity": "REVIEW",
+          "suggestions": [],
+          "title": "Possible duplicate depreciation"
+        }
+      ],
+      "id": "JE-006",
+      "override": null,
+      "rule_trace": [
+        [
+          "R01",
+          "pass"
+        ],
+        [
+          "R02",
+          "pass"
+        ],
+        [
+          "R03",
+          "pass"
+        ],
+        [
+          "R04",
+          "pass"
+        ],
+        [
+          "R05",
+          "pass"
+        ],
+        [
+          "R06",
+          "pass"
+        ],
+        [
+          "R07",
+          "pass"
+        ],
+        [
+          "R08",
+          "fail"
+        ],
+        [
+          "R09",
+          "pass"
+        ],
+        [
+          "R10",
+          "pass"
+        ],
+        [
+          "R11",
+          "pass"
+        ]
+      ],
+      "summary": "On hold for your decision. Not posted. Accumulated depreciation already grew by $850,000.00 since the prior period, which equals the depreciation expense already in the TB ($850,000.00). Adding $215,000.00 more may double count. Next step: Check the fixed asset register: is this amount incremental to what the TB already contains?",
+      "summary_source": "template"
+    },
+    {
+      "content_hash": "f593475dfe0c9e55ce190d2a36b9c8c69f46bcc87f9b091e9941f31c326e4b02",
+      "decision": "ACCEPTED",
+      "findings": [],
+      "id": "JE-007",
+      "override": null,
+      "rule_trace": [
+        [
+          "R01",
+          "pass"
+        ],
+        [
+          "R02",
+          "pass"
+        ],
+        [
+          "R03",
+          "pass"
+        ],
+        [
+          "R04",
+          "pass"
+        ],
+        [
+          "R05",
+          "pass"
+        ],
+        [
+          "R06",
+          "pass"
+        ],
+        [
+          "R07",
+          "pass"
+        ],
+        [
+          "R08",
+          "pass"
+        ],
+        [
+          "R09",
+          "pass"
+        ],
+        [
+          "R10",
+          "pass"
+        ],
+        [
+          "R11",
+          "pass"
+        ]
+      ],
+      "summary": "Passed all checks and was posted.",
+      "summary_source": "template"
+    },
+    {
+      "content_hash": "42e99e4059a92d79dc0386f730f1bea01dd478dee74de15073aab287e123afa0",
+      "decision": "REJECTED",
+      "findings": [
+        {
+          "action": "Ask the preparer for the intended counter-account (usually cash or the intercompany receivable) and resubmit.",
+          "facts": {
+            "accounts": [
+              "2170"
+            ],
+            "amount": "320000.0"
+          },
+          "plain": "Every line posts to the same account(s) (2170) and cancels out: $320,000.00 is debited and credited to the same place, so the entry changes nothing. Intercompany settlements need a different account on each side (for example cash against the intercompany payable).",
+          "rule": "R04",
+          "severity": "BLOCK",
+          "suggestions": [],
+          "title": "Entry nets to zero (circular)"
+        },
+        {
+          "action": "Decide the category in the COA.",
+          "facts": {
+            "account": 2170
+          },
+          "plain": "Account 2170 ('Intercompany Payable') has no cash-flow category in the COA, so this entry's effect on the cash-flow statement is unclassified.",
+          "rule": "R11",
+          "severity": "INFO",
+          "suggestions": [],
+          "title": "Cash-flow category undecided for 2170"
+        }
+      ],
+      "id": "JE-008",
+      "override": null,
+      "rule_trace": [
+        [
+          "R01",
+          "pass"
+        ],
+        [
+          "R02",
+          "pass"
+        ],
+        [
+          "R03",
+          "pass"
+        ],
+        [
+          "R04",
+          "fail"
+        ],
+        [
+          "R05",
+          "pass"
+        ],
+        [
+          "R06",
+          "pass"
+        ],
+        [
+          "R07",
+          "pass"
+        ],
+        [
+          "R08",
+          "pass"
+        ],
+        [
+          "R09",
+          "pass"
+        ],
+        [
+          "R10",
+          "pass"
+        ],
+        [
+          "R11",
+          "fail"
+        ]
+      ],
+      "summary": "Rejected. Not posted. Every line posts to the same account(s) (2170) and cancels out: $320,000.00 is debited and credited to the same place, so the entry changes nothing. Intercompany settlements need a different account on each side (for example cash against the intercompany payable). Next step: Ask the preparer for the intended counter-account (usually cash or the intercompany receivable) and resubmit.",
+      "summary_source": "template"
+    },
+    {
+      "content_hash": "222018d0407ba6fc820dada0d3b7326b28cc121453909a7c1f4f32ab82743625",
+      "decision": "ACCEPTED",
+      "findings": [],
+      "id": "JE-009",
+      "override": null,
+      "rule_trace": [
+        [
+          "R01",
+          "pass"
+        ],
+        [
+          "R02",
+          "pass"
+        ],
+        [
+          "R03",
+          "pass"
+        ],
+        [
+          "R04",
+          "pass"
+        ],
+        [
+          "R05",
+          "pass"
+        ],
+        [
+          "R06",
+          "pass"
+        ],
+        [
+          "R07",
+          "pass"
+        ],
+        [
+          "R08",
+          "pass"
+        ],
+        [
+          "R09",
+          "pass"
+        ],
+        [
+          "R10",
+          "pass"
+        ],
+        [
+          "R11",
+          "pass"
+        ]
+      ],
+      "summary": "Passed all checks and was posted.",
+      "summary_source": "template"
+    },
+    {
+      "content_hash": "e3ce6eff3e6f5b8ee961fba97cb40d65f607f25c2c4c5d6eb6e2595c31f2d7a1",
+      "decision": "ACCEPTED",
+      "findings": [],
+      "id": "JE-010",
+      "override": null,
+      "rule_trace": [
+        [
+          "R01",
+          "pass"
+        ],
+        [
+          "R02",
+          "pass"
+        ],
+        [
+          "R03",
+          "pass"
+        ],
+        [
+          "R04",
+          "pass"
+        ],
+        [
+          "R05",
+          "pass"
+        ],
+        [
+          "R06",
+          "pass"
+        ],
+        [
+          "R07",
+          "pass"
+        ],
+        [
+          "R08",
+          "pass"
+        ],
+        [
+          "R09",
+          "pass"
+        ],
+        [
+          "R10",
+          "pass"
+        ],
+        [
+          "R11",
+          "pass"
+        ]
+      ],
+      "summary": "Passed all checks and was posted.",
+      "summary_source": "template"
+    }
+  ],
+  "period": "2024-Q4",
+  "run_id": "f846bb2bfe8cf9628070fa1a56f56c2d903ca883d95b89fa08fdf4c438aa39f5"
+}

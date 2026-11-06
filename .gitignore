@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+output_with_approvals/
+echo ".venv/" >> .gitignore
+# Environment variables
+.env
+# Virtual environment
+.venv/
+venv/
+env/

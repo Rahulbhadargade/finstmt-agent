@@ -1,0 +1,102 @@
+[
+  {
+    "account": 6100,
+    "credit": "0",
+    "debit": "850000.0",
+    "decision": "ACCEPTED_WITH_WARNINGS",
+    "entry": "JE-001",
+    "line": 1,
+    "memo": "Bonus accrual",
+    "source": "Finance team \u2014 bonus accrual workbook v3"
+  },
+  {
+    "account": 2120,
+    "credit": "850000.0",
+    "debit": "0",
+    "decision": "ACCEPTED_WITH_WARNINGS",
+    "entry": "JE-001",
+    "line": 2,
+    "memo": "Accrual offset",
+    "source": "Finance team \u2014 bonus accrual workbook v3"
+  },
+  {
+    "account": 6600,
+    "credit": "0",
+    "debit": "45000.0",
+    "decision": "ACCEPTED",
+    "entry": "JE-004",
+    "line": 1,
+    "memo": "Top-up reserve",
+    "source": "AR aging review"
+  },
+  {
+    "account": 1121,
+    "credit": "45000.0",
+    "debit": "0",
+    "decision": "ACCEPTED",
+    "entry": "JE-004",
+    "line": 2,
+    "memo": "Increase allowance",
+    "source": "AR aging review"
+  },
+  {
+    "account": 8200,
+    "credit": "0",
+    "debit": "38000.0",
+    "decision": "ACCEPTED",
+    "entry": "JE-007",
+    "line": 1,
+    "memo": "DTA reduction",
+    "source": "Tax provision memo"
+  },
+  {
+    "account": 1250,
+    "credit": "38000.0",
+    "debit": "0",
+    "decision": "ACCEPTED",
+    "entry": "JE-007",
+    "line": 2,
+    "memo": "Reduce DTA",
+    "source": "Tax provision memo"
+  },
+  {
+    "account": 6400,
+    "credit": "0",
+    "debit": "75000.0",
+    "decision": "ACCEPTED",
+    "entry": "JE-009",
+    "line": 1,
+    "memo": "Legal accrual",
+    "source": "Legal memo dated 2024-12-29"
+  },
+  {
+    "account": 2120,
+    "credit": "75000.0",
+    "debit": "0",
+    "decision": "ACCEPTED",
+    "entry": "JE-009",
+    "line": 2,
+    "memo": "Accrued legal",
+    "source": "Legal memo dated 2024-12-29"
+  },
+  {
+    "account": 2210,
+    "credit": "0",
+    "debit": "200000.0",
+    "decision": "ACCEPTED",
+    "entry": "JE-010",
+    "line": 1,
+    "memo": "Out of LT debt",
+    "source": "Treasury schedule"
+  },
+  {
+    "account": 2140,
+    "credit": "200000.0",
+    "debit": "0",
+    "decision": "ACCEPTED",
+    "entry": "JE-010",
+    "line": 2,
+    "memo": "Into current",
+    "source": "Treasury schedule"
+  }
+]
